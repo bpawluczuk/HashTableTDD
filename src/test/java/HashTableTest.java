@@ -24,7 +24,7 @@ public class HashTableTest {
     @Test
     public void testIncreaseSizeWhenAddElementToHashTable(){
         HashTable<String, String> hashTable = new HashTable<>();
-        assertEquals(hashTable.getSize(), 0);
+        // Init size = 0
         hashTable.add();
         assertEquals(hashTable.getSize(), 1);
     }
