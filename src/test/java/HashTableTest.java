@@ -21,5 +21,13 @@ public class HashTableTest {
         assertEquals(hashTable.getBucketIndex("exampleKey"), bucketIndex);
     }
 
+    @Test
+    public void testIncreaseSizeWhenAddElementToHashTable(){
+        HashTable<String, String> hashTable = new HashTable<>();
+        assertEquals(hashTable.getSize(), 0);
+        hashTable.add();
+        assertEquals(hashTable.getSize(), 1);
+    }
+
 }
 
