@@ -6,12 +6,18 @@ public class HashTable<K, V> {
         numBuckets = 10;
     }
     public boolean isEmpty() {
-        return size == 0;
+        return getSize() == 0;
     }
-    public int getBucketIndex(K key){
+    public int getBucketIndex(K key) {
         int hashCode = key.hashCode();
         return (int) hashCode % numBuckets;
-    };
+    }
+    public int getSize() {
+        return size;
+    }
+    public void add() {
+        size = size + 1;
+    }
 }
 
 
