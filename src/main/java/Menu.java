@@ -42,25 +42,34 @@ public class Menu {
         switch (choice) {
             case 1:
                 clearConsole();
-                System.out.println("Your choice is: 1");
+                System.out.print(Color.BLACK_BOLD);
+                System.out.println("Your choice is: 1 - trivial example");
+                System.out.print(Color.RESET);
+                trivialExample();
                 break;
             case 2:
                 clearConsole();
-                System.out.println("Your choice is: 2");
+                System.out.print(Color.BLACK_BOLD);
+                System.out.println("Your choice is: 2 - advanced example");
+                System.out.print(Color.RESET);
+                advancedExample();
                 break;
             case 3:
                 clearConsole();
-                System.out.println("Exec tests:");
+                System.out.print(Color.BLACK_BOLD);
+                System.out.println("Your choice is: 3 - execute tests");
+                System.out.print(Color.RESET);
                 execTests();
                 break;
             case 0:
-                System.out.println("Bye...");
+                System.out.print(Color.BLACK_BOLD);
+                System.out.println("Your choice is: 0 - Bye...");
+                System.out.print(Color.RESET);
                 break;
         }
     }
 
-    private void clearConsole()
-    {
+    private void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
@@ -85,5 +94,33 @@ public class Menu {
         } catch (Exception e) {
 
         }
+    }
+
+    public void trivialExample() {
+
+        HashTable<String, String> hashTable = new HashTable();
+
+        System.out.println("When you need add [key=>value] to HashTable, you will use this code:");
+
+        System.out.print(Color.BLUE);
+        System.out.println("hashTable.add(\"keyOne\", \"Red\");");
+        System.out.println("hashTable.add(\"keyTwo\", \"Blue\");");
+        System.out.println("hashTable.add(\"keyThree\", \"White\");");
+        System.out.print(Color.RESET);
+
+        hashTable.add("keyOne", "Red");
+        hashTable.add("keyTwo", "Blue");
+        hashTable.add("keyThree", "White");
+
+        System.out.println("When you need get value for key, you will use this code:");
+        System.out.print(Color.BLUE);
+        System.out.println("hashTable.get(\"keyTwo\");");
+        System.out.print(Color.RESET);
+        System.out.println("Result: [\"keyTwo\"] => " + hashTable.get("keyTwo"));
+    }
+
+    public void advancedExample() {
+        HashTable<String, String> hashTable = new HashTable();
+        hashTable.printTable();
     }
 }

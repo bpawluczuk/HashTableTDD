@@ -24,11 +24,11 @@ public class HashTableTest {
     @Test
     public void testGetBucketIndex() {
         HashTable<String, String> hashTable = new HashTable<>();
-        // Default HashTable size is 10
-        int capacity = 10;
+        // Default HashTable size is 4
+        int capacity = 4;
         String key = "exampleKey";
         int hashCode = key.hashCode();
-        int bucketIndex = (int) hashCode % capacity;
+        int bucketIndex = Math.abs(hashCode % capacity);
         assertEquals(hashTable.getBucketIndex("exampleKey"), bucketIndex);
     }
 
@@ -38,14 +38,45 @@ public class HashTableTest {
         assertEquals(hashTable.isEmpty(), true);
     }
 
-
     @Test
     public void testIncreaseSizeWhenAddElementToHashTable() {
         HashTable<String, String> hashTable = new HashTable<>();
         // Init size = 0
-        hashTable.add();
-        assertEquals(hashTable.getSize(), 1);
+        hashTable.add("key", "value");
+        assertEquals(hashTable.size(), 1);
     }
 
+    @Test
+    public void testDecreaseSizeWhenRemoveElementFromHashTable() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        hashTable.add("key", "value");
+        assertEquals(hashTable.size(), 1);
+        hashTable.remove("key");
+        assertEquals(hashTable.size(), 0);
+    }
+
+    @Test
+    public void testChangeSizeWhenAddAndRemoveElement() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        assertEquals(hashTable.size(), 0);
+        hashTable.add("key", "value");
+        assertEquals(hashTable.size(), 1);
+        hashTable.remove("key");
+        assertEquals(hashTable.size(), 0);
+    }
+
+    @Test
+    void testFetchedElementShouldHasTheSameValueWhenItWasAdded() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        hashTable.add("key", "value");
+        assertEquals(hashTable.get("key"), "value");
+    }
+
+    @Test
+    void testCheckIfHashTableContainsKey() {
+        HashTable<String, String> hashTable = new HashTable<>();
+        hashTable.add("key", "value");
+        assertTrue(hashTable.contains("key"));
+    }
 }
 
