@@ -118,16 +118,15 @@ public class HashTable<K, V> {
     }
 
     public void printTable() {
-        System.out.print("\nHashTable = ");
+        System.out.print("HashTable = ");
         System.out.print("[");
         bucketArray.forEach(entry -> {
             if(entry == null){
                 System.out.print("null, ");
             }else {
-                System.out.print("[" + entry.key + "=>" + entry.value + "], ");
+                System.out.print("" + entry.key + "=>" + entry.value + ", ");
             }
         });
         System.out.print("]");
-        System.out.println();
     }
 }
